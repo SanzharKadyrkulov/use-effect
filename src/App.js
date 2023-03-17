@@ -20,7 +20,7 @@ function App() {
 		getProducts();
 	}, []);
 
-	return <MainRoutes />;
+	return <MainRoutes products={products} />;
 }
 
 export default App;

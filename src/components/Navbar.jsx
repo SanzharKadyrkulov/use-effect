@@ -11,6 +11,7 @@ function AppNavbar() {
 				<Nav className="me-auto">
 					<Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
 					<Nav.Link onClick={() => navigate("/products")}>Products</Nav.Link>
+					<Nav.Link onClick={() => navigate("/add")}>Add Product</Nav.Link>
 				</Nav>
 			</Container>
 		</Navbar>

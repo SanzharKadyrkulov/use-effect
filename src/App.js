@@ -20,7 +20,11 @@ function App() {
 		getProducts();
 	}, []);
 
-	return <MainRoutes products={products} />;
+	async function addProduct(newProduct) {
+		await axios.post(API, newProduct);
+	}
+
+	return <MainRoutes addProduct={addProduct} products={products} />;
 }
 
 export default App;

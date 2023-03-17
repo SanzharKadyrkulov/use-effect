@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-function ProductsPage({ products }) {
+function ProductsPage({ products, deleteProduct }) {
+	const navigate = useNavigate();
 	return (
 		<div>
 			{products.map((item) => {
@@ -12,6 +14,19 @@ function ProductsPage({ products }) {
 							<Card.Title>{item.title}</Card.Title>
 							<Card.Text>${item.price}</Card.Text>
 							<Button variant="primary">Details</Button>
+							<Button
+								className="mx-2"
+								onClick={() => deleteProduct(item.id)}
+								variant="danger"
+							>
+								Delete
+							</Button>
+							<Button
+								onClick={() => navigate(`/edit/${item.id}`)}
+								variant="warning"
+							>
+								Edit
+							</Button>
 						</Card.Body>
 					</Card>
 				);

@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-function AddProductPage({ addProduct }) {
+function EditProductPage({ editProduct, getOneProduct, oneProduct }) {
+	const { id } = useParams();
 	const [formValue, setFormValue] = useState({
 		title: "",
 		price: "",
 		description: "",
 		image: "",
 	});
+
+	useEffect(() => {
+		getOneProduct(id);
+	}, []);
+
+	useEffect(() => {
+		if (oneProduct) {
+			setFormValue(oneProduct);
+		}
+	}, [oneProduct]);
 
 	function handleChange(e) {
 		const obj = {
@@ -26,7 +38,7 @@ function AddProductPage({ addProduct }) {
 		) {
 			return;
 		}
-		addProduct(formValue);
+		editProduct(id, formValue);
 		setFormValue({
 			title: "",
 			price: "",
@@ -89,4 +101,4 @@ function AddProductPage({ addProduct }) {
 	);
 }
 
-export default AddProductPage;
+export default EditProductPage;
